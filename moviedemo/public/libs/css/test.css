@@ -1,0 +1,17 @@
+.ulFirst{
+	border-bottom: 1px dashed #DDDDDD;
+  line-height: 100%;
+  clear: both;
+  margin-top: 10px;
+}
+
+.item{
+	display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.imglist{
+	width:100px;
+	margin-right:40px;
+}

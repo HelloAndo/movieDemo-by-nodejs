@@ -1,0 +1,54 @@
+nav(role="navigation").navbar.navbar-default.navbar-fixed-top.navbar-inverse
+	.container
+		.navbar-header
+			a.navbar-brand(href="/") movie
+			form.navbar-form.navbar-right(method="GET", action="/results")
+				.input-group
+					input.form-control(type="text" style="width:320px" name="q")
+					button.input-group-addon(href="javascript:void(0)",type="submit",style="height:34px; width:39px;")
+						span.glyphicon.glyphicon-search
+		if user
+			p.navbar-text.navbar-right
+				span welcome,#{user.name}
+				span &nbsp;|&nbsp;
+				a.navbar-link(href="/logout") logout
+		else
+			p.navbar-text.navbar-right
+				a.navbar-link(href="javascript:void(0)", data-toggle="modal", data-target="#signupModal") Sign up
+				span &nbsp;|&nbsp;
+				a.navbar-link(href="javascript:void(0)", data-toggle="modal", data-target="#signinModal") Sign in
+#signupModal.modal.fade
+	.modal-dialog
+		.modal-content
+			form(method="POST", action="/user/signup")
+				.modal-header Sign up
+				.modal-body
+					.form-group
+						label(for="signupName") Username
+						input#signupName.form-control(name="user[name]", type="text")
+					.form-group
+						label(for="signupPassword") Password
+						input#signupPassword.form-control(name="user[password]", type="text")
+				.modal-footer
+					button.btn.btn-primary(type="button", data-dismiss="modal") close
+					button.btn.btn-primary(type="submit") submit
+#signinModal.modal.fade
+	.modal-dialog
+		.modal-content
+			form(method="POST", action="/user/signin")
+				.modal-header Sign in
+				.modal-body
+					.form-group
+						label(for="signinName") Username
+						input#signinName.form-control(name="user[name]", type="text")
+					.form-group
+						label(for="signinPassword") Password
+						input#signinPassword.form-control(name="user[password]", type="text")
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") close
+					button.btn.btn-success(type="submit") submit
+.container
+	.row
+		.page-header.clearfix
+			h1 #{title}
+			small Game addiction
